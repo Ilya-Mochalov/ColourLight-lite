@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport for iOS Safari to disable pinch-zoom and set fullscreen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- PWA Setup -->
+    <title>Video Light</title>
+    <link rel="manifest" href="./manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Light">
+    <link rel="apple-touch-icon" href="./icon.png">
+
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./style.css">
+    
+    <!-- iro.js for a premium, touch-friendly color wheel -->
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+</head>
+<body>
+    <!-- The main background that glows -->
+    <div id="light-background"></div>
+
+    <!-- The overlay UI -->
+    <div id="ui-container">
+        <header>
+            <h1>Video Light</h1>
+            <p>Tap anywhere outside to hide controls</p>
+        </header>
+
+        <main>
+            <!-- Tabs for Color / Temperature -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="color">Color</button>
+                <button class="tab-btn" data-tab="temperature">Temperature</button>
+            </div>
+
+            <!-- Color Panel -->
+            <div class="panel active" id="color-panel">
+                <div id="color-picker-container"></div>
+            </div>
+
+            <!-- Temperature Panel -->
+            <div class="panel" id="temperature-panel">
+                <div class="temp-display">
+                    <span id="temp-value">4500</span>K
+                </div>
+                <input type="range" id="temp-slider" min="2000" max="9000" value="4500" step="50">
+                <div class="temp-labels">
+                    <span>Warm</span>
+                    <span>Cool</span>
+                </div>
+                
+                <div class="presets">
+                    <button class="preset-btn" data-temp="3200">3200K</button>
+                    <button class="preset-btn" data-temp="4500">4500K</button>
+                    <button class="preset-btn" data-temp="5600">5600K</button>
+                </div>
+            </div>
+            
+            <div class="info-notice">
+                <span>⚠️ Note: Turn up your iPhone brightness manually for best results.</span>
+            </div>
+        </main>
+    </div>
+
+    <!-- Hidden tap layer to reveal UI -->
+    <div id="reveal-layer"></div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
